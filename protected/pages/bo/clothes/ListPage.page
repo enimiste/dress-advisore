@@ -9,6 +9,40 @@
         </div>
         <div class="panel-body">
             <div class="row">
+                <div class="col-lg-9"></div>
+                <div class="col-lg-3 well-lg">
+                    <div class="form-group">
+                        <com:TTextBox ID="TitleTxt"
+                                      Attributes.placeholder="Title"
+                                      CssClass="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <com:TDropDownList ID="SizeLbx"
+                                      CssClass="form-control">
+                            <com:TListItem Value="S" Text="Small"/>
+                            <com:TListItem Value="M" Text="Medium"/>
+                            <com:TListItem Value="L" Text="Large"/>
+                            <com:TListItem Value="XL" Text="X Large"/>
+                            <com:TListItem Value="XXL" Text="XX Large"/>
+                        </com:TDropDownList>
+                    </div>
+                    <div class="form-group">
+                        <com:TDropDownList ID="ColorLbx"
+                                           CssClass="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <com:TTextBox ID="TagsTxt"
+                                      Attributes.placeholder="Camma separated tags"
+                                      CssClass="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <com:TFileUpload ID="PictureFup"/>
+                    </div>
+                    <hr/>
+                    <com:TButton ID="AddNewClotheBtn" CssClass="btn btn-primary"
+                                 Text="Add new clothes"
+                                 OnClick="addNewClotheBtnClicked"/>
+                </div>
             </div>
         </div>
     </div>
