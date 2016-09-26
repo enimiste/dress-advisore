@@ -1,0 +1,15 @@
+<%@ MasterClass="BackLayout" Title="Clothes Sets" %>
+<com:TContent ID="PageHeader">
+    <i class="fa fa-users"></i>&nbsp;Clothes Sets
+</com:TContent>
+<com:TContent ID="Main">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            My Dresses
+        </div>
+        <div class="panel-body">
+            <div class="row">
+            </div>
+        </div>
+    </div>
+</com:TContent>

@@ -25,6 +25,12 @@
             <url ServiceParameter="bo.users.LoginPage" pattern="login"/>
             <url ServiceParameter="bo.users.UsersPage" pattern="users"/>
             <url ServiceParameter="bo.site_infos.SiteInfosPage" pattern="siteinfos"/>
+
+            <!-- Clothes -->
+            <url ServiceParameter="bo.clothes.ListPage" pattern="clothes"/>
+
+            <!-- Dresses -->
+            <url ServiceParameter="bo.dresses.ListPage" pattern="dresses"/>
         </module>
     </modules>
 </configuration>
