@@ -9,6 +9,7 @@
         Ex : http://localhost:8888/site-starter-prado/
         -->
         <parameter id="base_url" value="http://localhost/dress_adviser/"/>
+        <parameter id="app_name" value="@dvisore"/>
     </parameters>
 
 </configuration>

@@ -45,7 +45,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<%= page_url('bo.Dashboard') %>">@dvisore</a>
+        <a class="navbar-brand" href="<%= page_url('bo.Dashboard') %>"><%= param('app_name', '@dvisore') %></a>
       </div>
       <!-- /.navbar-header -->
 
