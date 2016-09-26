@@ -1,6 +1,8 @@
-# Prado Starter Project
-A Project skeleton to build [PRADO Framework][PRADO] based web application.  
-_Prado3 is a Component Framework for PHP 5 (Like ASP .NET dose for C#)._
+# Dress advisore web application
+An application  to manage our clothes and dresses.  
+- List all clothes that we have.
+- Compose clothes combination.
+- List all combinations.
 
 ## Pre-requisites :
 * php : >=5.3.3
@@ -15,7 +17,7 @@ _Prado3 is a Component Framework for PHP 5 (Like ASP .NET dose for C#)._
 Firstly run this command : 
 ```sh
 $ cd path/to/web/server/www
-$ composer create-project enimiste/prado-project-starter project_name
+$ git clone enimiste/dress-advisore project_name
 ```
 If all goes right open the new project in your favorite IDE. (ex: [PhpStorm])
 
