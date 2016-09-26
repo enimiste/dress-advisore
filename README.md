@@ -1,4 +1,4 @@
-# Dress advisore web application
+# Dress adviser web application
 An application  to manage our clothes and dresses.  
 - List all clothes that we have.
 - Compose clothes combination.
