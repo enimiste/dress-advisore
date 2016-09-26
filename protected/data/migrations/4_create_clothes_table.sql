@@ -1,8 +1,9 @@
 CREATE TABLE clothes (
-  cid int(11) NOT NULL AUTO_INCREMENT,
-  title varchar(255) NOT NULL,
+  clothe_id int(11) NOT NULL AUTO_INCREMENT,
+  title varchar(128) DEFAULT NULL,
   size char(4) NOT NULL,
   color char(20) NOT NULL,
-  tags varchar(255) DEFAULT NULL,
-  PRIMARY KEY (cid)
+  tags varchar(128) DEFAULT NULL,
+  username varchar(128) NOT NULL,
+  PRIMARY KEY (clothe_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
