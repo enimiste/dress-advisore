@@ -2,7 +2,7 @@
 <configuration>
     <!-- authorization rules definitions -->
     <authorization>
-        <deny users="*"/>
+        <deny users="?"/>
     </authorization>
 
 </configuration>
