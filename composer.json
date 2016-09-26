@@ -10,7 +10,8 @@
   ],
   "type": "project",
   "require": {
-    "pradosoft/prado": "~3.2"
+    "pradosoft/prado": "~3.2",
+    "enimiste/colors-names": "2.*"
   },
   "license": "MIT",
   "authors": [
@@ -33,5 +34,6 @@
       "chmod go+w protected/data",
       "chmod go+w uploads"
     ]
-  }
+  },
+  "minimum-stability": "dev"
 }

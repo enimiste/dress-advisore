@@ -4,9 +4,50 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2c8cfacc5d904fabe6252abe09bf71f1",
-    "content-hash": "96727dac40067a9450115705594bcd54",
+    "hash": "a560ba43d93411579eacc1069c8c70c9",
+    "content-hash": "cc72a6aa48459bfcf5b124bf0f87ba9e",
     "packages": [
+        {
+            "name": "enimiste/colors-names",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/enimiste/colors-names.git",
+                "reference": "c7ab308c37736beee7183cce25069d458fd4554d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/enimiste/colors-names/zipball/c7ab308c37736beee7183cce25069d458fd4554d",
+                "reference": "c7ab308c37736beee7183cce25069d458fd4554d",
+                "shasum": ""
+            },
+            "require-dev": {
+                "symfony/css-selector": "^3.1",
+                "symfony/dom-crawler": "^3.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Com\\NickelIT\\Colors\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "El bachir NOUNI",
+                    "email": "nouni.elbachir@gmail.com"
+                }
+            ],
+            "description": "Colors names and hex mapping from W3School web site",
+            "keywords": [
+                "colors",
+                "hex"
+            ],
+            "time": "2016-09-26 13:38:33"
+        },
         {
             "name": "pradosoft/prado",
             "version": "3.3.2",
@@ -104,7 +145,7 @@
     ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
