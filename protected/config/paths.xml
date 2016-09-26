@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+
+    <paths>
+        <!-- alias definitions and namespace usings
+          <alias id="myalias" path="./lib" />
+          -->
+
+        <using namespace="App.Code.Exception.*"/>
+        <using namespace="App.layouts.*"/>
+        <using namespace="App.layouts.bo.*"/>
+        <using namespace="App.layouts.fo.*"/>
+    </paths>
+</configuration>

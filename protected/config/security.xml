@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+    <!-- configuration for available services -->
+    <modules>
+        <module id="auth" class="System.Security.TAuthManager"
+                UserManager="users"
+                LoginPage="bo.users.LoginPage"/>
+        <module id="users" class="System.Security.TDbUserManager" UserClass="App.Code.Security.NDbUser"/>
+
+        <!-- For static users declaration
+         <module id="users" class="App.Code.Security.NUserManager"
+            PasswordMode="Clear">
+            <user name="sadmin" password="$2y$10$WRrU4uGk8FoVl7Jnu0DaB.Oa7LxszeuF8X9hcXaNtLhaUaFNBlkzO" />
+            <user name="admin" password="$2y$10$0uKw93VElULCIakmqnSQqe.yZaFO/A7DSKJFxw99Crs3LN4n/kvMq" />
+            <user name="user" password="$2y$10$T7kyuZnecqx2wLs5SFlv8.wJGGoBc8wYKqhG7R71Se/A.OdRZ5SLq" />
+            <role name="sadmin" users="sadmin" />
+            <role name="admin" users="sadmin,admin" />
+            <role name="user" users="user" />
+        </module>
+         -->
+    </modules>
+</configuration>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+    <!-- configurations for modules -->
+    <modules>
+        <!-- Remove this comment mark to enable caching
+        <module id="cache" class="System.Caching.TDbCache" />
+        -->
+        <module class="App.Code.Exception.Handler.NAppErrorHandler"/>
+
+        <module id="log" class="System.Util.TLogRouter">
+            <route class="TFileLogRoute" Categories="NAppException"
+                   MaxFileSize="512" MaxLogFiles="2"
+                   LogFile="app-error.log"
+            />
+        </module>
+    </modules>
+</configuration>

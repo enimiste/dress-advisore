@@ -1,0 +1,37 @@
+{
+  "name": "enimiste/dress-advisore",
+  "description": "Dress advisore web application based on Prado framework",
+  "keywords": [
+    "dress",
+    "cloths",
+    "advice",
+    "prado",
+    "web"
+  ],
+  "type": "project",
+  "require": {
+    "pradosoft/prado": "~3.2"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "El bachir NOUNI",
+      "email": "nouni.elbachir@gmail.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "protected/Code/helpers.php"
+    ]
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "mv protected/config/database.xml_ protected/config/database.xml",
+      "mv protected/config/parameters.xml_ protected/config/parameters.xml",
+      "chmod go+w assets",
+      "chmod go+w protected/runtime",
+      "chmod go+w protected/data",
+      "chmod go+w uploads"
+    ]
+  }
+}

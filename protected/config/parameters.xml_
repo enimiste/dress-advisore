@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<configuration>
+    <!-- application parameters -->
+    <parameters>
+        <!--
+        The Url to the root of your project.
+        You should keep trailing slash.
+        Ex : http://localhost:8888/site-starter-prado/
+        -->
+        <parameter id="base_url" value="http://localhost/dress_adviser/"/>
+    </parameters>
+
+</configuration>

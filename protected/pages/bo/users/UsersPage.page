@@ -1,0 +1,255 @@
+<%@ MasterClass="BackLayout" Title="Users Management" %>
+<com:TContent ID="PageHeader">
+  <i class="fa fa-users"></i>&nbsp;Users Management
+</com:TContent>
+<com:TContent ID="Main">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Users
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-9">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="table-responsive">
+                <com:TDataGrid ID="UsersDg"
+                               AllowSorting="true"
+                               AllowPaging="true"
+                               PageSize="15"
+                               PagerStyle.Mode="Numeric"
+                               AutoGenerateColumns="false"
+                               CssClass="table table-striped table-bordered table-hover"
+                               OnDeleteCommand="onDeleteSelectedUserCommand"
+                               OnItemCreated="userItemCreated"
+                               OnEditCommand="editSelectedUserCommand"
+                               OnUpdateCommand="saveSelectedUserCommand"
+                               OnCancelCommand="cancelSelectedUserCommand"
+                               DataKeyField="username"
+                               OnSortCommand="onSortUsersCommand"
+                               OnPagerCreated="onPagerCreated"
+                               OnPageIndexChanged="OnPageIndexChanged"
+                               OnItemCommand="onActionSelectedUserCommand"
+                >
+                  <com:TBoundColumn ID="FirstnameCol"
+                                    HeaderText="First name"
+                                    SortExpression="first_name"
+                                    DataField="first_name"/>
+
+                  <com:TBoundColumn ID="LastnameCol"
+                                    HeaderText="Last name"
+                                    SortExpression="last_name"
+                                    DataField="last_name"/>
+
+                  <com:TLiteralColumn HeaderText="Username"
+                                      DataField="username"
+                                      SortExpression="username"
+                  />
+
+                  <com:TBoundColumn ID="EmailCol"
+                                    HeaderText="Email Address"
+                                    SortExpression="email"
+                                    DataField="email"/>
+                  <com:TTemplateColumn ID="RoleCol"
+                                       SortExpression="role"
+                                       HeaderText="Role"
+                  >
+                    <!---
+                    $this->Parent in this context represent a TDataGridItem
+                    and $this->Parent->Data represent a UserRecord in our case
+                    --->
+                    <prop:ItemTemplate>
+                      <com:TLabel CssClass="label label-info" Text="<%# $this->Parent->Data->roleName %>"/>
+                    </prop:ItemTemplate>
+                    <prop:EditItemTemplate>
+                      <com:TDropDownList ID="DropDownList"
+                                         SelectedValue="<%# $this->Parent->Data->role %>">
+                        <com:TListItem Value="2" Text="Super Admin"/>
+                        <com:TListItem Value="1" Text="Admin"/>
+                        <com:TListItem Value="0" Text="Normal User"/>
+                      </com:TDropDownList>
+                    </prop:EditItemTemplate>
+                  </com:TTemplateColumn>
+                  <com:TEditCommandColumn UpdateText="Save" HeaderText="Edit"/>
+                  <com:TButtonColumn ID="DeleteCol"
+                                     Text="Delete"
+                                     HeaderText="Delete"
+                                     CommandName="delete"
+                                     CausesValidation="false"
+                  />
+                  <com:TButtonColumn ID="PwdCol"
+                                     Text="<i class='fa fa-key'></>"
+                                     HeaderText="Pwd"
+                                     CommandName="password"
+                                     CausesValidation="false"
+                  />
+                </com:TDataGrid>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <com:TPanel ID="PwdUpdatePanel" GroupingText="Update password">
+                <div class="well">
+                  <div class="form-group">
+                    <label>User name : </label>
+                    <span class="form-control-static" style="color:red;font-size:1.3em;">
+                      <com:TLiteral ID="PwdUsernameLt" Text="<%= $this->UsernameToUpdatePassword %>"/>
+                    </span>
+                  </div>
+                  <div class="form-group">
+                    <com:TRequiredFieldValidator ValidationGroup="pwd_update"
+                                                 ControlToValidate="NewPasswordTxt"
+                                                 ErrorMessage="*"
+                                                 Display="Dynamic"/>
+                    <com:TTextBox ID="NewPasswordTxt"
+                                  TextMode="Password"
+                                  Attributes.placeholder="Type a strong password"
+                                  ValidationGroup="pwd_update"
+                                  CssClass="form-control"/>
+                  </div>
+                  <div class="form-group">
+                    <com:TRequiredFieldValidator ValidationGroup="pwd_update"
+                                                 ControlToValidate="ReNewPasswordTxt"
+                                                 ErrorMessage="*"
+                                                 Display="Dynamic"/>
+                    <com:TCompareValidator ValidationGroup="pwd_update"
+                                           ControlToValidate="ReNewPasswordTxt"
+                                           ControlToCompare="NewPasswordTxt"
+                                           ErrorMessage="Passwords don't matches"
+                                           Display="Dynamic"/>
+                    <com:TTextBox ID="ReNewPasswordTxt"
+                                  TextMode="Password"
+                                  Attributes.placeholder="Retype your password here"
+                                  ValidationGroup="pwd_update"
+                                  CssClass="form-control"/>
+                  </div>
+                  <hr/>
+
+                  <com:TButton ID="savePasswordChangesBtn"
+                               Text="Save"
+                               CssClass="btn btn-primary"
+                               OnClick="savePasswordChangesBtnClicked"
+                               ValidationGroup="pwd_update"
+                  />
+                  <com:TButton ID="cancelPwdUpdateBtn"
+                               Text="Cancel"
+                               CssClass="btn btn-default"
+                               OnClick="cancelPwdUpdateBtnClicked"
+                               ValidationGroup="pwd_update"
+                               CausesValidation="false"
+                  />
+                </div>
+              </com:TPanel>
+            </div>
+          </div>
+        </div>
+        <!-- /.col-lg-6 (nested) -->
+        <div class="col-lg-3">
+          <div class="well">
+            <div class="form-group">
+              <com:TRequiredFieldValidator ValidationGroup="add_new_user"
+                                           ControlToValidate="FirstnameTxt"
+                                           ErrorMessage="*"
+                                           Display="Dynamic"/>
+              <com:TTextBox ID="FirstnameTxt"
+                            Attributes.placeholder="Your first name"
+                            ValidationGroup="add_new_user"
+                            CssClass="form-control"/>
+            </div>
+            <div class="form-group">
+              <com:TTextBox ID="LastnameTxt"
+                            Attributes.placeholder="Your last name (optional)"
+                            ValidationGroup="add_new_user"
+                            CssClass="form-control"/>
+            </div>
+            <div class="form-group">
+              <com:TRequiredFieldValidator ValidationGroup="add_new_user"
+                                           ControlToValidate="UsernameTxt"
+                                           ErrorMessage="*"
+                                           Display="Dynamic"/>
+              <com:TCustomValidator ValidationGroup="add_new_user"
+                                    ControlToValidate="UsernameTxt"
+                                    ErrorMessage="Choose another username"
+                                    Display="Dynamic"
+                                    OnServerValidate="validateUsername"/>
+              <com:TTextBox ID="UsernameTxt"
+                            Attributes.placeholder="An unique username"
+                            ValidationGroup="add_new_user"
+                            CssClass="form-control"/>
+            </div>
+            <div class="form-group">
+              <com:TRequiredFieldValidator ValidationGroup="add_new_user"
+                                           ControlToValidate="EmailTxt"
+                                           ErrorMessage="*"
+                                           Display="Dynamic"/>
+              <com:TEmailAddressValidator ValidationGroup="add_new_user"
+                                          ControlToValidate="EmailTxt"
+                                          ErrorMessage="Invalid email address"
+                                          CheckMXRecord="true"
+                                          Display="Dynamic"
+              />
+              <com:TTextBox ID="EmailTxt"
+                            Attributes.placeholder="Your email address"
+                            Attributes.type="email"
+                            ValidationGroup="add_new_user"
+                            CssClass="form-control"/>
+            </div>
+            <div class="form-group">
+              <com:TRequiredFieldValidator ValidationGroup="add_new_user"
+                                           ControlToValidate="PasswordTxt"
+                                           ErrorMessage="*"
+                                           Display="Dynamic"/>
+              <com:TTextBox ID="PasswordTxt"
+                            TextMode="Password"
+                            Attributes.placeholder="Type a strong password"
+                            ValidationGroup="add_new_user"
+                            CssClass="form-control"/>
+            </div>
+            <div class="form-group">
+              <com:TRequiredFieldValidator ValidationGroup="add_new_user"
+                                           ControlToValidate="RePasswordTxt"
+                                           ErrorMessage="*"
+                                           Display="Dynamic"/>
+              <com:TCompareValidator ValidationGroup="add_new_user"
+                                     ControlToValidate="RePasswordTxt"
+                                     ControlToCompare="PasswordTxt"
+                                     ErrorMessage="Passwords don't matches"
+                                     Display="Dynamic"/>
+              <com:TTextBox ID="RePasswordTxt"
+                            TextMode="Password"
+                            Attributes.placeholder="Retype your password here"
+                            ValidationGroup="add_new_user"
+                            CssClass="form-control"/>
+            </div>
+            <div class="form-group">
+              <com:TDropDownList ID="RolesDdl" CssClass="form-control">
+                <com:TListItem value="0" Text="Normal User" Selected="true"/>
+                <com:TListItem value="1" Text="Administrator"/>
+                <com:TListItem value="2" Text="Super Administrator"/>
+              </com:TDropDownList>
+            </div>
+            <hr/>
+
+            <com:TButton ID="saveNewUserBtn"
+                         Text="Add New User"
+                         CssClass="btn btn-primary"
+                         OnClick="saveNewUserBtnClicked"
+                         ValidationGroup="add_new_user"
+            />
+            <com:TButton ID="cancelAddNewUserBtn"
+                         Text="Cancel"
+                         CssClass="btn btn-default"
+                         OnClick="cancelAddNewUserBtnClicked"
+                         ValidationGroup="add_new_user"
+                         CausesValidation="false"
+            />
+          </div>
+        </div>
+        <!-- /.col-lg-6 (nested) -->
+      </div>
+      <!-- /.row (nested) -->
+    </div>
+    <!-- /.panel-body -->
+  </div>
+</com:TContent>

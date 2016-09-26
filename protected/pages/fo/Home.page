@@ -1,0 +1,4 @@
+<%@ MasterClass="FrontLayout" Title="Acceuil" %>
+<com:TContent ID="Main">
+  Bienvenu dans notre site web
+</com:TContent>
